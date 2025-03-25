@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Threat Prediction</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 30px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        button {
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #ff4757;
+        }
+    </style>
+</head>
+<body>
+    <h1>CYBER THREAT PREDICTION</h1>
+    <form action="/predict" method="post">
+        <label for="protocol">Protocol (Encoded):</label>
+        <input type="text" id="protocol" name="protocol" required>
+
+        <label for="flag">Flag:</label>
+        <input type="text" id="flag" name="flag" required>
+
+        <label for="packet">Packet Count:</label>
+        <input type="number" id="packet" name="packet" required min="0">
+
+        <label for="sender_id">Sender ID:</label>
+        <input type="text" id="sender_id" name="sender_id" required>
+
+        <label for="receiver_id">Receiver ID:</label>
+        <input type="text" id="receiver_id" name="receiver_id" required>
+
+        <label for="source_ip">Source IP (Encoded):</label>
+        <input type="text" id="source_ip" name="source_ip" required>
+
+        <label for="dest_ip">Destination IP (Encoded):</label>
+        <input type="text" id="dest_ip" name="dest_ip" required>
+
+        <label for="source_port">Source Port:</label>
+        <input type="number" id="source_port" name="source_port" required min="0">
+
+        <label for="dest_port">Destination Port:</label>
+        <input type="number" id="dest_port" name="dest_port" required min="0">
+
+        <label for="packet_size">Packet Size:</label>
+        <input type="number" id="packet_size" name="packet_size" required min="0"><br>
+        <p></p>
+
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
