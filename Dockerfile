@@ -1,23 +1,20 @@
-# Use Python 3.9
-FROM python:3.9
+# Use Python 3.10 to match networkx requirements
+FROM python:3.10
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
-# Copy files
+# Copy all project files into the container
 COPY . .
 
-# Upgrade pip
+# Upgrade pip before installing dependencies
 RUN pip install --upgrade pip
 
-# Manually install networkx first
-RUN pip install "networkx<3.4"
-
-# Install other dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose Flask port
+# Expose the port your Flask app runs on (default 5000)
 EXPOSE 5000
 
-# Run Flask app
+# Run the Flask app
 CMD ["python", "app.py"]
