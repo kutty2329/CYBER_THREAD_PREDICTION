@@ -1,17 +1,20 @@
-# Use an official Python image (Updated to Python 3.12)
-FROM python:3.12
+# Use Python 3.10 to match requirements
+FROM python:3.10
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy all project files into the container
+# Copy project files
 COPY . .
+
+# Upgrade pip before installing dependencies
+RUN pip install --upgrade pip
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose the port your Flask app runs on (default 5000)
+# Expose the Flask port
 EXPOSE 5000
 
-# Run the Flask app
+# Run the Flask application
 CMD ["python", "app.py"]
