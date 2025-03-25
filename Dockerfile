@@ -1,20 +1,20 @@
-# Use Python 3.10 to match networkx requirements
-FROM python:3.10
+FROM python:3.8
+
+# Set environment variable
+ENV PYTHONUNBUFFERED=1
 
 # Set the working directory
 WORKDIR /app
 
-# Copy all project files into the container
-COPY . .
+# Copy the requirements file and install dependencies
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt  # Fixed this line
 
-# Upgrade pip before installing dependencies
-RUN pip install --upgrade pip
+# Copy the rest of the application files
+COPY . /app
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose the port your Flask app runs on (default 5000)
+# Expose the port Flask runs on
 EXPOSE 5000
 
-# Run the Flask app
+# Command to run the application
 CMD ["python", "app.py"]
